@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import {initializeApp} from 'firebase/app'
 import {getFirestore, collection,getDocs} from 'firebase/firestore'
+import { Provider } from 'react-redux';
+import store from './store'
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6vCtocx-waHzacQrLaEtaCFTnzxmI-kg",
@@ -20,37 +24,40 @@ const userColRef = collection(db,'user')
 const postsColRef = collection(db,'posts')
 const forumColRef = collection(db,'forum')
 
-getDocs(userColRef).then((snapshot)=>{
-  let users = []
-  snapshot.docs.forEach(doc=>{
-    users.push({...doc.data(), id: doc.id})
-  })
+// getDocs(userColRef).then((snapshot)=>{
+//   let users = []
+//   snapshot.docs.forEach(doc=>{
+//     users.push({...doc.data(), id: doc.id})
+//   })
 
-  console.log(users)
-})
+//   console.log(users)
+// })
 
-getDocs(postsColRef).then((snapshot)=>{
-  let posts = []
-  snapshot.docs.forEach(doc=>{
-    posts.push({...doc.data(), id: doc.id})
-  })
+// getDocs(postsColRef).then((snapshot)=>{
+//   let posts = []
+//   snapshot.docs.forEach(doc=>{
+//     posts.push({...doc.data(), id: doc.id})
+//   })
 
-  console.log(posts)
-})
+//   console.log(posts)
+// })
 
-getDocs(forumColRef).then((snapshot)=>{
-  let forums = []
-  snapshot.docs.forEach(doc=>{
-    forums.push({...doc.data(), id: doc.id})
-  })
+// getDocs(forumColRef).then((snapshot)=>{
+//   let forums = []
+//   snapshot.docs.forEach(doc=>{
+//     forums.push({...doc.data(), id: doc.id})
+//   })
 
-  console.log(forums)
-})
+//   console.log(forums)
+// })
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
+export {userColRef, postsColRef, forumColRef} 
