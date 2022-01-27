@@ -9,7 +9,6 @@ export const asyncForum = createAsyncThunk('forum/initialize', async()=>{
     docsForum.docs.forEach(doc=>{
         forums.push({...doc.data(), id: doc.id})
     })
-    console.log(forums)
     return forums
     
 })

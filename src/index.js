@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Prova from './components/Prova'
 import {initializeApp} from 'firebase/app'
-import {getFirestore, collection,getDocs} from 'firebase/firestore'
+import {getFirestore, collection} from 'firebase/firestore'
 import { Provider } from 'react-redux';
 import store from './store'
-
-
+import AuthenticationPage from './components/AuthPage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6vCtocx-waHzacQrLaEtaCFTnzxmI-kg",
@@ -24,38 +24,10 @@ const userColRef = collection(db,'user')
 const postsColRef = collection(db,'posts')
 const forumColRef = collection(db,'forum')
 
-// getDocs(userColRef).then((snapshot)=>{
-//   let users = []
-//   snapshot.docs.forEach(doc=>{
-//     users.push({...doc.data(), id: doc.id})
-//   })
-
-//   console.log(users)
-// })
-
-// getDocs(postsColRef).then((snapshot)=>{
-//   let posts = []
-//   snapshot.docs.forEach(doc=>{
-//     posts.push({...doc.data(), id: doc.id})
-//   })
-
-//   console.log(posts)
-// })
-
-// getDocs(forumColRef).then((snapshot)=>{
-//   let forums = []
-//   snapshot.docs.forEach(doc=>{
-//     forums.push({...doc.data(), id: doc.id})
-//   })
-
-//   console.log(forums)
-// })
-
-
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App></App>
   </Provider>,
   document.getElementById('root')
 );

@@ -9,7 +9,6 @@ export const asyncUser = createAsyncThunk('users/initialize', async()=>{
     docsUser.docs.forEach(doc=>{
         users.push({...doc.data(), id: doc.id})
     })
-    console.log(users)
     return users
     
 })
