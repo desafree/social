@@ -7,7 +7,7 @@ export const asyncUser = createAsyncThunk('users/initialize', async()=>{
     const docsUser = await getDocs(userColRef)
     let users = []
     docsUser.docs.forEach(doc=>{
-        users.push({...doc.data(), id: doc.id})
+        users.push(doc.data())
     })
     return users
     
@@ -15,7 +15,7 @@ export const asyncUser = createAsyncThunk('users/initialize', async()=>{
 
 const userSlice = createSlice({
     name : 'users',
-    initialState: {name:'user container', users:[{name:'sara'}]},
+    initialState: {users:[{}]},
     reducers : {},
     extraReducers(builder) {
         builder.addCase(asyncUser.fulfilled, (state,action)=>{

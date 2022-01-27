@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SignOut from './SignOut';
 
+import { onlineUser } from '../slice/activeUserSlice';
+
+
 
 
 
@@ -51,10 +54,13 @@ const AuthenticationPage = () => {
             addDoc(userColRef,{
                 email: cred.user.email,
                 username: username,
-                forums:[] 
+                forums:[],
+                userID:cred.user.uid
 
             }).then(()=>{
+                console.log('logged in', auth.currentUser)
                 dispatch(asyncUser())
+                dispatch(onlineUser(auth.currentUser))
                 navigate('/')
             })
             console.log(cred.user)}).catch((err)=>{console.log(err)})
