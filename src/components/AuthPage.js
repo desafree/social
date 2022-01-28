@@ -22,10 +22,12 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig)
-const db = getFirestore()
-const auth = getAuth()
+export const db = getFirestore()
+export const auth = getAuth()
 
-const userColRef = collection(db,'user')
+export const userColRef = collection(db,'user')
+export const forumColRef = collection(db,'forum')
+export const postsColRef = collection(db,'posts')
 
 
 
